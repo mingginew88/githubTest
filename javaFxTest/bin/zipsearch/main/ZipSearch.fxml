@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane prefHeight="600.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="zipsearch.main.ZipSearchController">
+   <center>
+      <TableView fx:id="zipTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="zipCodeCol" prefWidth="75.0" text="우편번호" />
+          <TableColumn fx:id="sidoCol" prefWidth="75.0" text="시도" />
+            <TableColumn fx:id="gugunCol" prefWidth="75.0" text="구군" />
+            <TableColumn fx:id="dongCol" prefWidth="75.0" text="동" />
+            <TableColumn fx:id="riCol" prefWidth="75.0" text="리" />
+            <TableColumn fx:id="bldgCol" prefWidth="75.0" text="빌딩" />
+            <TableColumn fx:id="bunjiCol" prefWidth="75.0" text="번지" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <HBox fx:id="hbox" alignment="CENTER" prefHeight="23.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <ComboBox fx:id="cmbSelect" prefWidth="100.0" promptText="동이름" />
+            <TextField fx:id="tfData" />
+            <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#zipSearch" text="검색" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

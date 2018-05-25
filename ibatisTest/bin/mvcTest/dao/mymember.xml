@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<!-- namespace속성 : 아래에서 작성한 SQL문을 호출할 때 같이 사용된다. -->
+<sqlMap namespace="memberTest">
+<!-- 
+	이문서에서만 사용될 alias를 지정할 수 있다.
+	<typeAlias ..../>
+-->
+	<typeAlias alias="memVo" type="mvcTest.vo.MemberVO" />
+
+<!-- 
+	이영역에 SQL문에 맞는 태그를 사용하여 SQL문을 기술한다. 
+	
+	사용할 수 있는 기본적인 태그들
+	<select>~~~</select>
+	<insert>~~~</insert>
+	<update>~~~</update>
+	<delete>~~~</delete>
+	
+	위의 태그에서 사용할 수 있는 속성들..
+	1) id속성 : 해당 태그를 호출할 때 <sqlMap>태그의 namespace와 연결하여 사용하는 이름이다.
+	2) parameterClass속성 : SQL문에 사용될 데이터가 들어있는 객체를 지정한다.
+						(보통 VO클래스, 자바의 자료형 이름 등이 사용된다.)
+						(typeAlias에 지정한 alias명을 사용할 수 있다.)
+	3) resultClass속성 : select문을 실행한 결과를 담을 객체를 지정한다.
+						(보통 VO클래스, 자바의 자료형 이름 등이 사용된다.)						
+-->
+
+	<!-- insert 연습 -->
+	<insert id="insertMember" parameterClass="mvcTest.vo.MemberVO">
+		insert into mymember(mem_id, mem_name, mem_tel, mem_addr) values(#mem_id#,#mem_name#,#mem_tel#,#mem_addr#)
+	</insert>	
+	
+	<!-- update 연습 -->
+	<update id="updateMember" parameterClass="memVo">
+		update mymember set mem_name=#mem_name#,
+							mem_tel=#mem_tel#,
+							mem_addr=#mem_addr#
+							where mem_id=#mem_id#
+	</update>
+	
+	<!-- delete 연습 -->
+	<!-- 
+		parameterClass에 설정되는 값이 단일값(즉, 1개의 데이터)이면
+		SQL문에 이 값을 나타내는 변수는 그 이름이 특별히 정해지지 않았다. 
+		(즉, 사용자가 임의로 지정할 수 있다.) 
+	-->
+	<delete id="deleteMember" parameterClass="String">
+		delete from mymember where mem_id=#mem_id#
+	</delete>
+	
+	<!-- select 연습 -->
+	<!-- 조건이 없는 select문 ==> parameterClass가 필요없다. -->
+	<!-- resultClass에는 select한 결과중 1개의 레코드가 저장될 수 있는 객체를 지정한다. -->
+	<select id="getAllMember" resultClass="memVO">
+		select * from mymember
+	</select>
+	
+	<select id="getMember" parameterClass="string" resultClass="memVo">
+		select * from mymember where mem_id=#mem_id#
+	</select>
+	
+
+	
+	<!-- 
+		parameterClass에 지정된 값을 쿼리문의 칼럼며으로 사용하려면
+		 칼럼명이 저장된 변수명 앞뒤에 #기호가 아닌 $기호를 사용해야한다.
+	-->
+	<select id="getSearchMember" parameterClass="Map" resultClass="memVo">
+		select * from mymember where $searchField$ = #searchData#
+	</select>
+
+	<select id="getAddrSearchMember" parameterClass="Map" resultClass="memVo">
+		select * from mymember where $searchField$ like '%' || #searchData# || '%'
+	</select>
+	
+	<select id="getCountMember" parameterClass="string" resultClass="int">
+		select count(*) from mymember where mem_id = #mem_id#
+	</select>
+
+	
+	
+
+</sqlMap>
+
+
+
+
+
+
+
+

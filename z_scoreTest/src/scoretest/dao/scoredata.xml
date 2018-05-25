@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="scoredata">
+
+	<typeAlias alias="scoreVo" type="scoretest.vo.ScoreDataVO"/>
+	
+	<select id="getSearchAllScore" resultClass="scoreVo">
+		select * from student
+	</select>
+	
+	<insert id="addScore" parameterClass="scoreVo">
+		insert into student(std_num, std_name, std_kor, std_eng, std_mat) 
+				values(std_seq.NEXTVAL,#std_name#,#std_kor#,#std_eng#,#std_mat#)
+					
+	</insert>
+
+	<update id="updateScore"  parameterClass="scoreVo">
+		update student set std_kor = #std_kor#,
+						std_eng = #std_eng#,
+						std_mat = #std_mat#
+						where std_name = #std_name#
+						
+	</update>
+
+	<delete id="deleteScore" parameterClass="Integer">
+		delete from student where std_num = #std_num#
+	</delete>
+
+
+
+</sqlMap>

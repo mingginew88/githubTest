@@ -1,0 +1,36 @@
+
+
+ITEXT (Pdf)
+1. 다운받는 사이트, 예제 정보
+https://developers.itextpdf.com/
+
+
+Poi
+1. 다운받는 사이트
+https://poi.apache.org/download.html
+
+
+
+DOM
+
+
+
+JSON
+1. 다운받는 사이트
+http://mvnrepository.com/open-source/json-libraries
+http://www.java2s.com/Code/Jar/j/Downloadjacksonall190jar.htm
+2. 참고사이트
+https://www.lesstif.com/pages/viewpage.action?pageId=24445183
+https://www.json.org/json-ko.html
+http://jdm.kr/blog/224
+http://blog.hkwon.me/jackson-map-serialization
+http://arisu1000.tistory.com/27710
+
+
+Quartz
+1. 다운받는 사이트 
+http://www.quartz-scheduler.org/
+2. 예제정보
+http://blog.naver.com/PostView.nhn?blogId=tyboss&logNo=70097397002
+3. 코딩정보
+https://www.mkyong.com/java/quartz-2-scheduler-tutorial/
